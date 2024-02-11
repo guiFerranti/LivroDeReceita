@@ -9,12 +9,12 @@ public class Version000001 : Migration
 
     public override void Up()
     {
-        var tabela = Create.Table("User");
+        var tabela = Create.Table("Usuarios");
         BaseVersion.InserirTabelaBase(tabela);
 
 
         tabela
-            .WithColumn("Name").AsString(100).NotNullable()
+            .WithColumn("Nome").AsString(100).NotNullable()
             .WithColumn("Email").AsString(100).NotNullable()
             .WithColumn("Senha").AsString(2000).NotNullable()
             .WithColumn("Telefone").AsString(14).NotNullable();

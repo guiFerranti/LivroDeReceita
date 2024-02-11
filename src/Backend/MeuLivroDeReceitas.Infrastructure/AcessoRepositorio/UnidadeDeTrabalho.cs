@@ -14,7 +14,7 @@ public sealed class UnidadeDeTrabalho : IDisposable, IUnidadeDeTrabalho
 
     public async Task Commit()
     {
-        _context.SaveChangesAsync();
+        await _context.SaveChangesAsync();
     }
 
 

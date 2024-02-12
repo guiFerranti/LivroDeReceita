@@ -6,7 +6,7 @@ public class EncriptadorDeSenhaBuilder
 {
     public static EncriptadorDeSenha  Instancia()
     {
-        return new EncriptadorDeSenha("SENHA-ADICIONAL");
+        return new EncriptadorDeSenha("SENHA-ADICIONAL-TEST");
     }
 
 }

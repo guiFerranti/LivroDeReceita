@@ -6,9 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace MeuLivroDeReceitas.API.Controllers;
 
-[ApiController]
-[Route("[controller]")]
-public class UsuarioController : ControllerBase
+public class UsuarioController : MeuLivroDeReceitasController
 {
 
     [HttpPost]

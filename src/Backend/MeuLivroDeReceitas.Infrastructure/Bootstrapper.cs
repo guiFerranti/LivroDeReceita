@@ -1,6 +1,7 @@
 ﻿using FluentMigrator.Runner;
 using MeuLivroDeReceitas.Domain.Extension;
 using MeuLivroDeReceitas.Domain.Repositorios;
+using MeuLivroDeReceitas.Domain.Repositorios.Usuario;
 using MeuLivroDeReceitas.Infrastructure.AcessoRepositorio;
 using MeuLivroDeReceitas.Infrastructure.AcessoRepositorio.Repositorio;
 using Microsoft.EntityFrameworkCore;
@@ -23,19 +24,13 @@ public static class Bootstrapper
 
     private static void AddContexto(IServiceCollection services, IConfiguration configurationManager)
     {
-        bool.TryParse(configurationManager.GetSection("Configuracoes:BancoDeDadosInMemory").Value, out bool bancoDeDadosInMemory);
+        var connectionString = configurationManager.GetConexaoCompleta();
+        var versaoServer = ServerVersion.AutoDetect(connectionString);
 
-        if (!bancoDeDadosInMemory)
+        services.AddDbContext<MeuLivroDeReceitasContext>(dbContextOptions =>
         {
-            var connectionString = configurationManager.GetConexaoCompleta();
-            var versaoServer = ServerVersion.AutoDetect(connectionString);
-
-            services.AddDbContext<MeuLivroDeReceitasContext>(dbContextOptions =>
-            {
-                dbContextOptions.UseMySql(connectionString, versaoServer);
-            });
-        }
-
+            dbContextOptions.UseMySql(connectionString, versaoServer);
+        });
     }
 
 
@@ -48,21 +43,17 @@ public static class Bootstrapper
     private static void AddRepositorios(IServiceCollection services)
     {
         services.AddScoped<IUsuarioWriteOnlyRepositorio, UsuarioRepositorio>()
-            .AddScoped<IUsuarioReadOnlyRepositorio, UsuarioRepositorio>();
+            .AddScoped<IUsuarioReadOnlyRepositorio, UsuarioRepositorio>()
+            .AddScoped<IUsuarioUpdateOnlyRepositorio, UsuarioRepositorio>();
     }
 
 
     private static void AddFluentMigrator(IServiceCollection services, IConfiguration configurationManager)
     {
-        bool.TryParse(configurationManager.GetSection("Configuracoes:BancoDeDadosInMemory").Value, out bool bancoDeDadosInMemory);
 
-        if (!bancoDeDadosInMemory)
-        {
-            services.AddFluentMigratorCore().ConfigureRunner(c =>
+        services.AddFluentMigratorCore().ConfigureRunner(c => 
             c.AddMySql5()
             .WithGlobalConnectionString(configurationManager.GetConexaoCompleta()).ScanIn(Assembly.Load("MeuLivroDeReceitas.Infrastructure")).For.All());
-        }
-
     }
 
 

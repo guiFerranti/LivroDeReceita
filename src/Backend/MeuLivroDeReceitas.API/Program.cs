@@ -3,6 +3,7 @@ using MeuLivroDeReceitas.Application;
 using MeuLivroDeReceitas.Application.Servicos.AutoMapper;
 using MeuLivroDeReceitas.Domain.Extension;
 using MeuLivroDeReceitas.Infrastructure;
+using MeuLivroDeReceitas.Infrastructure.AcessoRepositorio;
 using MeuLivroDeReceitas.Infrastructure.Migrations;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -48,10 +49,21 @@ app.Run();
 
 void AtualizarDb() 
 {
-    var nomeDb = builder.Configuration.GetNomeDatabase();
-    var conexao = builder.Configuration.GetConexao();
+    using var serviceScope = app.Services.GetRequiredService<IServiceScopeFactory>().CreateScope();
+    using var context = serviceScope.ServiceProvider.GetService<MeuLivroDeReceitasContext>();
 
-    Database.CriarDatabase(conexao, nomeDb);
+    bool? databaseInMemory = context?.Database?.ProviderName?.Equals("Microsoft.EntityFrameworkCore.InMemory");
 
-    app.MigrateDb();
+    if (!databaseInMemory.HasValue || !databaseInMemory.Value)
+    {
+        var nomeDb = builder.Configuration.GetNomeDatabase();
+        var conexao = builder.Configuration.GetConexao();
+
+        Database.CriarDatabase(conexao, nomeDb);
+
+        app.MigrateDb();
+    }
+
 }
+
+public partial class Program { }

@@ -1,5 +1,6 @@
 ﻿using MeuLivroDeReceitas.Application.Servicos.Criptografia;
 using MeuLivroDeReceitas.Application.Servicos.Token;
+using MeuLivroDeReceitas.Application.UseCases.Login.FazerLogin;
 using MeuLivroDeReceitas.Application.UseCases.Usuario.Registrar;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -16,7 +17,8 @@ public static class Bootstrapper
 
         AdicionarTokenJWT(services, configuration);
 
-        services.AddScoped<IRegistrarUsuarioUseCase, RegistrarUsuarioUseCase>();
+        AdicionarUseCase(services);
+
     }
 
     private static void AdicionarChaveAdicionalSenha(IServiceCollection services, IConfiguration configuration)
@@ -34,5 +36,11 @@ public static class Bootstrapper
         services.AddScoped(opt => new TokenController(int.Parse(sectionTempoVida.Value), sectionChaveToken.Value));
     }
 
+    private static void AdicionarUseCase(IServiceCollection services)
+    {
+        services.AddScoped<IRegistrarUsuarioUseCase, RegistrarUsuarioUseCase>()
+            .AddScoped<ILoginUseCase, LoginUseCase>();
+
+    }
 
 }

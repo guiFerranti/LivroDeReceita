@@ -67,7 +67,7 @@ public class RegistrarUsuarioUseCaseTest
         var unidadeDeTrabalho = UnidadeDeTrabalhoBuilder.Instancia().Construir();
         var encriptador = EncriptadorDeSenhaBuilder.Instancia();
         var tokenController = TokenControllerBuilder.Instancia();
-        var repositorioReadOnly = UsuarioReadOnlyRepositorioBuilder.Instancia().ExisteUsuarioComEmail(email).Construir(); ;
+        var repositorioReadOnly = UsuarioReadOnlyRepositorioBuilder.Instancia().ExisteUsuarioComEmail(email).Construir();
 
         return new RegistrarUsuarioUseCase(repositorioReadOnly, repositorio, mapper, unidadeDeTrabalho, encriptador, tokenController);
     }

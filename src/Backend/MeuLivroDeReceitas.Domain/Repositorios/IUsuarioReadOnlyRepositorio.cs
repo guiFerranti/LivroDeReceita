@@ -1,6 +1,6 @@
 ﻿namespace MeuLivroDeReceitas.Domain.Repositorios;
 
-public interface IUsuarioReadOnly
+public interface IUsuarioReadOnlyRepositorio
 {
     Task<bool> ExisteUsuarioEmail(string email);
 }

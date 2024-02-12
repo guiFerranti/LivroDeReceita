@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace MeuLivroDeReceitas.Infrastructure.AcessoRepositorio.Repositorio;
 
-public class UsuarioRepositorio : IUsuarioReadOnly, IUsuarioRepositorioWriteOnly
+public class UsuarioRepositorio : IUsuarioReadOnlyRepositorio, IUsuarioWriteOnlyRepositorio
 {
     private readonly MeuLivroDeReceitasContext _context;
 

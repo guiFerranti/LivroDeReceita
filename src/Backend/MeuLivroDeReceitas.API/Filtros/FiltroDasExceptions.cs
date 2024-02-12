@@ -3,8 +3,6 @@ using MeuLivroDeReceitas.Exceptions;
 using MeuLivroDeReceitas.Exceptions.ExceptionsBase;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
 using System.Net;
 
 namespace MeuLivroDeReceitas.API.Filtros;
@@ -31,7 +29,7 @@ public class FiltroDasExceptions : IExceptionFilter
         }
         else if (context.Exception is LoginInvalidoException)
         {
-
+            TratarLoginException(context);
         }
     }
 

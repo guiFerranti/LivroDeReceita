@@ -11,14 +11,14 @@ namespace MeuLivroDeReceitas.Application.UseCases.Usuario.Registrar;
 
 public class RegistrarUsuarioUseCase : IRegistrarUsuarioUseCase
 {
-    private readonly IUsuarioReadOnly _usuarioRepositorioReadOnly;
-    private readonly IUsuarioRepositorioWriteOnly _repositorio;
+    private readonly IUsuarioReadOnlyRepositorio _usuarioRepositorioReadOnly;
+    private readonly IUsuarioWriteOnlyRepositorio _repositorio;
     private readonly IMapper _mapper;
     private readonly IUnidadeDeTrabalho _unidadeDeTrabalho;
     private readonly EncriptadorDeSenha _encriptadorDeSenha;
     private readonly TokenController _tokenController;
 
-    public RegistrarUsuarioUseCase(IUsuarioReadOnly usuarioRepositorioReadOnly, IUsuarioRepositorioWriteOnly repositorio, IMapper mapper, IUnidadeDeTrabalho unidadeDeTrabalho, EncriptadorDeSenha encriptadorDeSenha, TokenController tokenController)
+    public RegistrarUsuarioUseCase(IUsuarioReadOnlyRepositorio usuarioRepositorioReadOnly, IUsuarioWriteOnlyRepositorio repositorio, IMapper mapper, IUnidadeDeTrabalho unidadeDeTrabalho, EncriptadorDeSenha encriptadorDeSenha, TokenController tokenController)
     {
         _usuarioRepositorioReadOnly = usuarioRepositorioReadOnly;
         _repositorio = repositorio;

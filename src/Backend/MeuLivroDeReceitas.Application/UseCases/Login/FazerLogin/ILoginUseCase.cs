@@ -1,5 +1,4 @@
-﻿using MeuLivroDeReceitas.Comunicacao.Request;
-using MeuLivroDeReceitas.Comunicacao.Response;
+﻿using MeuLivroDeReceitas.Comunicacao.Response;
 
 namespace MeuLivroDeReceitas.Application.UseCases.Login.FazerLogin;
 

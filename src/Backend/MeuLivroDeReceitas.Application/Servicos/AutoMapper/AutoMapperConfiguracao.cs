@@ -7,7 +7,7 @@ public class AutoMapperConfiguracao : Profile
 {
     public AutoMapperConfiguracao()
     {
-        CreateMap<RequestRegistrarUsuarioJson, Domain.Entidades.Usuario>().ReverseMap()
+        CreateMap<RequisicaoRegistrarUsuarioJson, Domain.Entidades.Usuario>().ReverseMap()
             .ForMember(destino => destino.Senha, config => config.Ignore());
     }
 }

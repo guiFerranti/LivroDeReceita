@@ -115,6 +115,15 @@ namespace MeuLivroDeReceitas.Exceptions {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to A senha atual é inválida..
+        /// </summary>
+        public static string SENHA_ATUAL_INVALIDA {
+            get {
+                return ResourceManager.GetString("SENHA_ATUAL_INVALIDA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to A senha precisa ter no minimo 6 caracteres..
         /// </summary>
         public static string SENHA_USER_INVALIDO {
@@ -147,6 +156,24 @@ namespace MeuLivroDeReceitas.Exceptions {
         public static string TELEFONE_USER_VAZIO {
             get {
                 return ResourceManager.GetString("TELEFONE_USER_VAZIO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Faça login novamento no App..
+        /// </summary>
+        public static string TOKEN_EXPIRADO {
+            get {
+                return ResourceManager.GetString("TOKEN_EXPIRADO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Você não tem permissão para acessar isso..
+        /// </summary>
+        public static string USUARIO_SEM_PERMISSAO {
+            get {
+                return ResourceManager.GetString("USUARIO_SEM_PERMISSAO", resourceCulture);
             }
         }
     }

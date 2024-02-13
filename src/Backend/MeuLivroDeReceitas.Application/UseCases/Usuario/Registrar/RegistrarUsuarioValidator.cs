@@ -5,7 +5,7 @@ using System.Text.RegularExpressions;
 
 namespace MeuLivroDeReceitas.Application.UseCases.Usuario.Registrar;
 
-public class RegistrarUsuarioValidator : AbstractValidator<RequestRegistrarUsuarioJson>
+public class RegistrarUsuarioValidator : AbstractValidator<RequisicaoRegistrarUsuarioJson>
 {
     public RegistrarUsuarioValidator()
     {
@@ -31,10 +31,6 @@ public class RegistrarUsuarioValidator : AbstractValidator<RequestRegistrarUsuar
             RuleFor(r => r.Email).EmailAddress().WithMessage(ResourceMensagensDeErro.EMAIL_USER_INVALIDO);
         });
 
-        RuleFor(r => r.Senha).NotEmpty().WithMessage(ResourceMensagensDeErro.SENHA_USER_VAZIO);
-        When(r => !string.IsNullOrWhiteSpace(r.Senha), () =>
-        {
-            RuleFor(r => r.Senha.Length).GreaterThanOrEqualTo(6).WithMessage(ResourceMensagensDeErro.SENHA_USER_INVALIDO);
-        });
+        RuleFor(c => c.Senha).SetValidator(new SenhaValidator());
     }
 }

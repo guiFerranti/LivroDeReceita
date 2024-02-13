@@ -1,4 +1,4 @@
-﻿namespace MeuLivroDeReceitas.Comunicacao.Request;
+﻿namespace MeuLivroDeReceitas.Comunicacao.Response;
 
 public class RespostaLoginJson
 {

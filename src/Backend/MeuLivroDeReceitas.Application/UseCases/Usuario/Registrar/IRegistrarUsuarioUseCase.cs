@@ -5,5 +5,5 @@ namespace MeuLivroDeReceitas.Application.UseCases.Usuario.Registrar;
 
 public interface IRegistrarUsuarioUseCase
 {
-    Task<RespostaUsuarioRegistradoJson> Executar(RequestRegistrarUsuarioJson requisicao);
+    Task<RespostaUsuarioRegistradoJson> Executar(RequisicaoRegistrarUsuarioJson requisicao);
 }

@@ -1,5 +1,4 @@
 ﻿using MeuLivroDeReceitas.Application.UseCases.Login.FazerLogin;
-using MeuLivroDeReceitas.Comunicacao.Request;
 using MeuLivroDeReceitas.Comunicacao.Response;
 using Microsoft.AspNetCore.Mvc;
 

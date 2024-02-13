@@ -29,7 +29,7 @@ public class RegistrarUsuarioUseCase : IRegistrarUsuarioUseCase
         _tokenController = tokenController;
     }
 
-    public async Task<RespostaUsuarioRegistradoJson> Executar(RequestRegistrarUsuarioJson requisicao)
+    public async Task<RespostaUsuarioRegistradoJson> Executar(RequisicaoRegistrarUsuarioJson requisicao)
     {
         await Validar(requisicao);
 
@@ -48,7 +48,7 @@ public class RegistrarUsuarioUseCase : IRegistrarUsuarioUseCase
         };
     }
 
-    private async Task Validar(RequestRegistrarUsuarioJson requisicao)
+    private async Task Validar(RequisicaoRegistrarUsuarioJson requisicao)
     {
         var validator = new RegistrarUsuarioValidator();
         var result = validator.Validate(requisicao);

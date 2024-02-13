@@ -10,7 +10,13 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
+// lower case na rota
+
 builder.Services.AddRouting(opt => opt.LowercaseUrls = true);
+
+// adicionar httpcontext para acessar tokens 
+
+builder.Services.AddHttpContextAccessor();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -26,6 +32,11 @@ builder.Services.AddScoped(prov => new AutoMapper.MapperConfiguration(cfg =>
 {
     cfg.AddProfile(new AutoMapperConfiguracao());
 }).CreateMapper());
+
+// adicionando autenticação
+
+builder.Services.AddScoped<UsuarioAutenticadoAtributo>();
+
 
 var app = builder.Build();
 

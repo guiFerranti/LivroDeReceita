@@ -10,12 +10,12 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace MeuLivroDeReceitas.API.Filtros;
 
-public class UsuarioAutenticadoAtributo : AuthorizeAttribute, IAsyncAuthorizationFilter
+public class UsuarioAutenticadoAttribute : AuthorizeAttribute, IAsyncAuthorizationFilter
 {
     private readonly TokenController _tokenController;
     private readonly IUsuarioReadOnlyRepositorio _repositorioReadOnly;
 
-    public UsuarioAutenticadoAtributo(TokenController tokenController, IUsuarioReadOnlyRepositorio repositorioReadOnly)
+    public UsuarioAutenticadoAttribute(TokenController tokenController, IUsuarioReadOnlyRepositorio repositorioReadOnly)
     {
         _tokenController = tokenController;
         _repositorioReadOnly = repositorioReadOnly;
@@ -28,7 +28,7 @@ public class UsuarioAutenticadoAtributo : AuthorizeAttribute, IAsyncAuthorizatio
             var token = TokenNaRequisicao(context);
 
             var email = _tokenController.RecuperarEmail(token);
-            var usuario = _repositorioReadOnly.RecuperarPorEmail(email);
+            var usuario = await _repositorioReadOnly.RecuperarPorEmail(email);
 
             if (usuario is null)
             {
@@ -47,7 +47,7 @@ public class UsuarioAutenticadoAtributo : AuthorizeAttribute, IAsyncAuthorizatio
 
     private static string TokenNaRequisicao(AuthorizationFilterContext context)
     {
-        var auth = context.HttpContext.Request.Headers["Authorization"].ToString();
+        var auth = context.HttpContext.Request.Headers.Authorization.ToString();
 
         if (string.IsNullOrWhiteSpace(auth))
         {

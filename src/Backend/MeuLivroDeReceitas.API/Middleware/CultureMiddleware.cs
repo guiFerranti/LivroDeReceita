@@ -26,7 +26,7 @@ public class CultureMiddleware
 
         if (context.Request.Headers.ContainsKey("Accept-language")) 
         {
-            var language = context.Request.Headers["Accept-language"].ToString();
+            var language = context.Request.Headers.AcceptLanguage.ToString();
 
             if (_idiomasSuportados.Any(c => c.Equals(language)))
             {

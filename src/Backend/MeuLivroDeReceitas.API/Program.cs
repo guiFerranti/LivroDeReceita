@@ -36,7 +36,7 @@ builder.Services.AddScoped(prov => new AutoMapper.MapperConfiguration(cfg =>
 
 // adicionando autenticação
 
-builder.Services.AddScoped<UsuarioAutenticadoAtributo>();
+builder.Services.AddScoped<UsuarioAutenticadoAttribute>();
 
 
 var app = builder.Build();
@@ -79,4 +79,6 @@ void AtualizarDb()
 
 }
 
+#pragma warning disable CA1050, S3903, S1118
 public partial class Program { }
+#pragma warning disable CA1050, S3903, S1118

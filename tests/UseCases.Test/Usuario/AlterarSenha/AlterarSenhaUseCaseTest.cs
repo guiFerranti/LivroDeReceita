@@ -98,7 +98,7 @@ public class AlterarSenhaUseCaseTest
     }
 
 
-    private AlterarSenhaUseCase CriarUseCase(MeuLivroDeReceitas.Domain.Entidades.Usuario usuario)
+    private static AlterarSenhaUseCase CriarUseCase(MeuLivroDeReceitas.Domain.Entidades.Usuario usuario)
     {
         var encriptador = EncriptadorDeSenhaBuilder.Instancia();
         var unidadeTrabalho = UnidadeDeTrabalhoBuilder.Instancia().Construir();

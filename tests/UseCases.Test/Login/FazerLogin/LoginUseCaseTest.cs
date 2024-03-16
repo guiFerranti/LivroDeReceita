@@ -93,7 +93,7 @@ public class LoginUseCaseTest
         
     
 
-    private LoginUseCase CriarUseCase(MeuLivroDeReceitas.Domain.Entidades.Usuario usuario)
+    private static LoginUseCase CriarUseCase(MeuLivroDeReceitas.Domain.Entidades.Usuario usuario)
     {
 
         var encriptador = EncriptadorDeSenhaBuilder.Instancia();

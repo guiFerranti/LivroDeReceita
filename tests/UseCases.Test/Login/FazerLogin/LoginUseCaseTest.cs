@@ -55,7 +55,7 @@ public class LoginUseCaseTest
     public async Task Validar_Erro_Email_Invalida()
     {
         (var usuario, var senha) = UsuarioBuilder.Construir();
-
+        await Console.Out.WriteLineAsync();
         var useCase = CriarUseCase(usuario);
 
         Func<Task> acao = async () =>

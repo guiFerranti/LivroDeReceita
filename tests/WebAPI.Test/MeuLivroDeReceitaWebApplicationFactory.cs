@@ -1,4 +1,4 @@
-﻿using MeuLivroDeReceitas.Domain.Entidades;
+﻿    using MeuLivroDeReceitas.Domain.Entidades;
 using MeuLivroDeReceitas.Infrastructure.AcessoRepositorio;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
@@ -18,7 +18,7 @@ public class MeuLivroDeReceitaWebApplicationFactory<TStartup> : WebApplicationFa
             .ConfigureServices(services =>
             {
                 var descritor = services.SingleOrDefault(s => s.ServiceType == typeof(MeuLivroDeReceitasContext));
-                if (descritor != null) services.Remove(descritor);
+                if (descritor is not null) services.Remove(descritor);
 
                 var provider = services.AddEntityFrameworkInMemoryDatabase().BuildServiceProvider();
 

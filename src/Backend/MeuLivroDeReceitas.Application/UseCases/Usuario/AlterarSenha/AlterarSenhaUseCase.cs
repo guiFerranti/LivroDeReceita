@@ -30,10 +30,7 @@ public class AlterarSenhaUseCase : IAlterarSenhaUseCase
 
         var usuario = await _repositorio.RecuperarPorId(usuarioLogado.Id);
 
-
         Validar(requisicao, usuario);
-
-
 
         var novaSenha = _encriptadorDeSenha.Criptografar(requisicao.SenhaNova);
 

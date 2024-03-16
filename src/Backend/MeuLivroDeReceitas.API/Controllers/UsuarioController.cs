@@ -25,7 +25,7 @@ public class UsuarioController : MeuLivroDeReceitasController
     [HttpPut]
     [Route("alterar-senha")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
-    [ServiceFilter(typeof(UsuarioAutenticadoAtributo))]
+    [ServiceFilter(typeof(UsuarioAutenticadoAttribute))]
     public async Task<IActionResult> AlterarSenha(
         [FromServices] IAlterarSenhaUseCase useCase,
         [FromBody] RequisicaoAlterarSenha requisicao)

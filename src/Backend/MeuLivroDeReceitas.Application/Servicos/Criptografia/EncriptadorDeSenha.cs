@@ -17,13 +17,12 @@ public class EncriptadorDeSenha
         var senhaAppendChave = $"{senha}{_chaveAdicional}";
 
         var bytes = Encoding.UTF8.GetBytes(senhaAppendChave);
-        var sha512 = SHA512.Create();
-        byte[] hashBytes = sha512.ComputeHash(bytes);
+        byte[] hashBytes = SHA512.HashData(bytes);
 
         return StringBytes(hashBytes);
     }
 
-    private string StringBytes(byte[] hashBytes)
+    private static string StringBytes(byte[] hashBytes)
     {
         var sb = new StringBuilder();
         foreach (byte b in hashBytes)

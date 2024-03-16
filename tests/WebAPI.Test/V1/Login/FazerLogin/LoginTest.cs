@@ -5,7 +5,7 @@ using System.Net;
 using System.Text.Json;
 using Xunit;
 
-namespace WebAPI.Test.V1.Usuario.FazerLogin;
+namespace WebAPI.Test.V1.Login.FazerLogin;
 
 public class LoginTest : ControllerBase
 {
@@ -15,11 +15,11 @@ public class LoginTest : ControllerBase
     private string _senha;
 
 
-    public LoginTest(MeuLivroDeReceitaWebApplicationFactory<Program> factory) : base(factory) 
+    public LoginTest(MeuLivroDeReceitaWebApplicationFactory<Program> factory) : base(factory)
     {
         _usuario = factory.RecuperarUsuario();
         _senha = factory.RecuperarSenha();
-    
+
     }
 
     [Fact]

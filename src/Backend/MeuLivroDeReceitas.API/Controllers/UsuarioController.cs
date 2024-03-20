@@ -28,7 +28,7 @@ public class UsuarioController : MeuLivroDeReceitasController
     [ServiceFilter(typeof(UsuarioAutenticadoAttribute))]
     public async Task<IActionResult> AlterarSenha(
         [FromServices] IAlterarSenhaUseCase useCase,
-        [FromBody] RequisicaoAlterarSenha requisicao)
+        [FromBody] RequisicaoAlterarSenhaJson requisicao)
     {
         await useCase.Executar(requisicao);
 

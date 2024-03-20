@@ -1,3 +1,4 @@
+using HashidsNet;
 using MeuLivroDeReceitas.API.Filtros;
 using MeuLivroDeReceitas.API.Middleware;
 using MeuLivroDeReceitas.Application;
@@ -31,7 +32,7 @@ builder.Services.AddMvc(opts => opts.Filters.Add(typeof(FiltroDasExceptions)));
 
 builder.Services.AddScoped(prov => new AutoMapper.MapperConfiguration(cfg =>
 {
-    cfg.AddProfile(new AutoMapperConfiguracao());
+    cfg.AddProfile(new AutoMapperConfiguracao(prov.GetService<IHashids>()));
 }).CreateMapper());
 
 // adicionando autenticação

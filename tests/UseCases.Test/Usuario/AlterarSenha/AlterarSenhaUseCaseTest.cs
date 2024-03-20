@@ -42,7 +42,7 @@ public class AlterarSenhaUseCaseTest
 
         Func<Task> acao = async () =>
         {
-            await useCase.Executar(new RequisicaoAlterarSenha
+            await useCase.Executar(new RequisicaoAlterarSenhaJson
             {
                 SenhaAtual = senha,
                 SenhaNova = ""

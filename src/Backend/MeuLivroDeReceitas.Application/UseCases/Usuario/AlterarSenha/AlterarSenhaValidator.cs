@@ -3,7 +3,7 @@ using MeuLivroDeReceitas.Comunicacao.Request;
 
 namespace MeuLivroDeReceitas.Application.UseCases.Usuario.AlterarSenha;
 
-public class AlterarSenhaValidator : AbstractValidator<RequisicaoAlterarSenha>
+public class AlterarSenhaValidator : AbstractValidator<RequisicaoAlterarSenhaJson>
 {
     public AlterarSenhaValidator()
     {

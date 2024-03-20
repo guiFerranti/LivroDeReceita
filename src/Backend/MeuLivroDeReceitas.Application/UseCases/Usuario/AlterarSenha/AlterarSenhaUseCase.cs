@@ -24,7 +24,7 @@ public class AlterarSenhaUseCase : IAlterarSenhaUseCase
         _unidadeDeTrabalho = unidadeDeTrabalho;
     }
 
-    public async Task Executar(RequisicaoAlterarSenha requisicao)
+    public async Task Executar(RequisicaoAlterarSenhaJson requisicao)
     {
         var usuarioLogado = await _usuarioLogado.RecuperarUsuario();
 
@@ -40,7 +40,7 @@ public class AlterarSenhaUseCase : IAlterarSenhaUseCase
         await _unidadeDeTrabalho.Commit();
     }
 
-    private void Validar(RequisicaoAlterarSenha requisicao, Domain.Entidades.Usuario usuario)
+    private void Validar(RequisicaoAlterarSenhaJson requisicao, Domain.Entidades.Usuario usuario)
     {
         var validator = new AlterarSenhaValidator();
         var resultado = validator.Validate(requisicao);

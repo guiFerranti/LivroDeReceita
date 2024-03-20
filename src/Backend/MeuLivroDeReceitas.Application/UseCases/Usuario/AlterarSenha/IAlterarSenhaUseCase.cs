@@ -4,5 +4,5 @@ namespace MeuLivroDeReceitas.Application.UseCases.Usuario.AlterarSenha;
 
 public interface IAlterarSenhaUseCase
 {
-    Task Executar(RequisicaoAlterarSenha requisicao);
+    Task Executar(RequisicaoAlterarSenhaJson requisicao);
 }

@@ -20,7 +20,7 @@ public class UsuarioLogado : IUsuarioLogado
 
     public async Task<Usuario> RecuperarUsuario()
     {
-        var token = _contextAccessor.HttpContext.Request.Headers["Authorization"].ToString().Replace("Bearer ", "");
+        var token = _contextAccessor.HttpContext.Request.Headers.Authorization.ToString().Replace("Bearer ", "");
         var emailUsuario = _tokenController.RecuperarEmail(token);
 
         var usuario = await _usuarioReadOnlyRepositorio.RecuperarPorEmail(emailUsuario);

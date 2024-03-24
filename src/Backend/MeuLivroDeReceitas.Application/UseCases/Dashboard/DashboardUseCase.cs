@@ -22,7 +22,7 @@ public class DashboardUseCase : IDashboardUseCase
 
     public async Task<RespostaDashboardJson> Executar(RequisicaoDashboardJson requisicao)
     {
-        var usuarioLogado = _usuarioLogado.RecuperarUsuario();
+        var usuarioLogado = await _usuarioLogado.RecuperarUsuario();
 
         var receitas = await _repositorio.RecuperarTodasDoUsuario(usuarioLogado.Id);
 
@@ -45,7 +45,12 @@ public class DashboardUseCase : IDashboardUseCase
 
         if (!string.IsNullOrWhiteSpace(requisicao.TituloOuIngrediente))
         {
-            receitasFiltradas = receitas.Where(r => r.Titulo.Contains(requisicao.TituloOuIngrediente) || r.Ingredientes.Any(i => i.Produto.Contains(requisicao.TituloOuIngrediente))).ToList();
+            receitasFiltradas = receitas
+                .Where(r => r.Titulo.Contains(requisicao.TituloOuIngrediente, StringComparison.CurrentCultureIgnoreCase)
+                ||
+                r.Ingredientes
+                .Any(i => i.Produto.Contains(requisicao.TituloOuIngrediente, StringComparison.CurrentCultureIgnoreCase)))
+                .ToList();
         }
 
         return receitasFiltradas;
